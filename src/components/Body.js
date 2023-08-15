@@ -8,9 +8,9 @@ import useRestaurant from "../utils/useRestaurant";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-
   const allRestaurant = useRestaurant();
-  const filteredRestaurants = allRestaurant;
+  debugger;
+  let filteredRestaurants = allRestaurant;
 
   // const isOnline = useCheckOnline();
   // if (!isOnline) {
@@ -23,10 +23,10 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+      <div className="search-container p-5 bg-pink-100 my-5">
         <input
           type="text"
-          className="search-input"
+          className="focus:bg-green-100 p-2 m-2"
           placeholder="Search"
           value={searchText}
           onChange={(e) => {
@@ -34,23 +34,24 @@ const Body = () => {
           }}
         />
         <button
-          className="search-btn"
+          className="p-2 m-3 bg-purple-500 text-white rounded-md"
           onClick={() => {
-            const data = filterData(searchText, allRestaurant);
-            setFilteredRestaurants(data);
+            filteredRestaurants = filterData(searchText, allRestaurant);
+            // setFilteredRestaurants(data);
           }}
         >
           Search
         </button>
       </div>
-      <div className="restaurant-list">
+      <div className="flex flex-wrap">
+        {console.log(filteredRestaurants, "Filter")}
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
-              to={"/restaurant/" + restaurant.data.id}
-              key={restaurant.data.id}
+              to={"/restaurant/" + restaurant?.info?.id}
+              key={restaurant?.info?.id}
             >
-              <RestaurantCard {...restaurant.data} />
+              <RestaurantCard {...restaurant.info} />
             </Link>
           );
         })}

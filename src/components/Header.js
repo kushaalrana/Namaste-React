@@ -5,7 +5,7 @@ import useCheckOnline from "../utils/useCheckOnline";
 export const Title = () => (
   <a href="/">
     <img
-      className="logo"
+      className="h-28 p-2"
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmpusZSMNNFm0knw1b-Vx04o6kBD6vBt54ppoH8w0&s"
       alt="Food Castle"
     />
@@ -18,27 +18,27 @@ const Header = () => {
   const isOnline = useCheckOnline();
 
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-200 shadow">
       <Title />
       <div className="nav-items">
-        <ul>
+        <ul className="flex py-10">
           <Link to="/">
-            <li>Home</li>
+            <li className="px-2">Home</li>
           </Link>
           <Link to="/about">
-            <li>About</li>
+            <li className="px-2">About</li>
           </Link>
           <Link to="/contact">
-            <li>Contacts</li>
+            <li className="px-2">Contacts</li>
           </Link>
           <Link to="/">
-            <li>Carts</li>
+            <li className="px-2">Carts</li>
           </Link>
           <Link to="/instamart">
-            <li>Instamart</li>
+            <li className="px-2">Instamart</li>
           </Link>
           <Link to="/instacart">
-            <li>Instacart</li>
+            <li className="px-2">Instacart</li>
           </Link>
         </ul>
       </div>

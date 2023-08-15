@@ -35,20 +35,22 @@ const RestaurantMenu = () => {
   return restaurant === null ? (
     <Shimmer />
   ) : (
-    <div className="menu">
-      <div>
-        <h1>Restaurant id: {resId}</h1>
-        <h2>{restaurant?.name}</h2>
+    <div className="flex">
+      <div className="p-10">
+        <h1 className="text-center font-bold">Restaurant id: {resId}</h1>
+        <h2 className="text-center font-semibold m-5">{restaurant?.name}</h2>
         <img src={IMG_CND_URL + restaurant?.cloudinaryImageId} alt="" />
-        <h2>{restaurant?.area}</h2>
-        <h2>{restaurant?.city}</h2>
-        <h2>{restaurant?.avgRating}</h2>
-        <h2>{restaurant?.costForTwoMessage}</h2>
+        <h2 className="text-center font-semibold m">{restaurant?.area}</h2>
+        <h2 className="text-center font-semibold m">{restaurant?.city}</h2>
+        <h2 className="text-center font-semibold m">{restaurant?.avgRating}</h2>
+        <h2 className="text-center font-semibold m">
+          {restaurant?.costForTwoMessage}
+        </h2>
       </div>
 
-      <div>
-        <h1>Menu</h1>
-        <ul>
+      <div className="p-11 mt-9">
+        <h1 className="font-bold">Menu</h1>
+        <ul className="font-semibold">
           {menuItems?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards.map(
             (item, key) => (
               <li key={key}> {item?.card?.info?.name}</li>
