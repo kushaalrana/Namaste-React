@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 //default import
 import Header from "./components/Header";
@@ -13,7 +13,7 @@ import Form from "./components/Form";
 import Profile from "./components/ProfileClass";
 import Shimmer from "./components/Shimmer";
 import RestaurantMenu from "./components/RestaurantMenu";
-
+import userContext from "./utils/userContext";
 const Instamart = lazy(() => {
   return import("./components/Instamart");
 }); //Reason for not working: if brackets use return
@@ -26,12 +26,23 @@ const About = lazy(() => import("./components/About"));
 //upon onDemandLoading=>upon Render=>Suspends Loading
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "test",
+    email: "test@gmail.com",
+  });
   return (
     //This is <React.Fragment>
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <userContext.Provider
+        value={{
+          user: user,
+          setUser: setUser,
+        }}
+      >
+        <Header />
+        <Outlet />
+        <Footer />
+      </userContext.Provider>
     </>
   );
 };
